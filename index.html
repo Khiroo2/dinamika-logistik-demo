@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f1">
+  <meta name="description" content="Услуги по Казани. Выберите услугу, укажите маршрут и подготовьте заявку.">
+  <title>Динамика логистик — грузоперевозки</title>
+  <link rel="icon" href="assets/mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css?v=4.5">
+  <script defer src="assets/config.js?v=4.5"></script>
+  <script defer src="assets/core.js?v=4.5"></script>
+  <script defer src="assets/settings.js?v=4.5"></script>
+  <script defer src="assets/app.js?v=4.5"></script>
+</head>
+<body>
+  <div class="draft-banner" id="draft-banner" hidden><span id="draft-label"></span><a href="index.html">Закрыть предпросмотр</a><a href="owner.html">К настройкам</a></div>
+  <a class="skip-link" href="#main">К содержимому</a>
+  <header class="site-header">
+    <div class="header-inner container">
+      <a class="brand" href="#main" aria-label="На главную">
+        <span class="brand-mark" data-logo><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M3 9h23v20H3zM26 17h6l5 8v4H26M9 9v20M3 16h23" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="10" cy="31" r="4" fill="currentColor"/><circle cx="30" cy="31" r="4" fill="currentColor"/></svg></span>
+        <span class="brand-text"><strong data-company-name>Динамика логистик</strong><span data-company-descriptor>Грузоперевозки</span></span>
+      </a>
+      <div class="header-meta"><span class="header-region" data-region></span><span class="header-hours" data-company-hours hidden></span></div>
+      <nav aria-label="Основная навигация"><a href="#fleet">Услуги</a><a href="#request">Заявка</a></nav>
+      <a class="button button-primary header-cta" data-direct-contact href="#request">Оставить заявку</a>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <section class="hero container" aria-labelledby="hero-title">
+      <img class="hero-image" data-hero-image alt="Грузовик на дороге" width="1600" height="900" fetchpriority="high">
+      <div class="hero-shade" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="hero-region"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 10c0 5-7 11-7 11S5 15 5 10a7 7 0 0 1 14 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><span data-region></span></p>
+        <h1 id="hero-title" data-hero-title>Грузоперевозки<br>для ваших задач</h1>
+        <p class="hero-description" data-hero-description></p>
+        <div class="hero-actions"><a class="button button-primary" href="#fleet">Выбрать услугу <span aria-hidden="true">↗</span></a><a class="button button-light" data-direct-contact href="#request">Рассчитать стоимость</a></div>
+        <div class="hero-facts"><div><strong id="fleet-count">4</strong><span>варианта услуг</span></div><div><strong>По задаче</strong><span>подбор транспорта и работ</span></div></div>
+      </div>
+    </section>
+    <div class="benefit-strip container"><div><b>Услуги под задачу</b><span>Перевозка, погрузка и помощь</span></div><div><b>Согласование стоимости</b><span>С учётом объёма и условий работ</span></div><div><b>Прямая связь</b><span>Детали согласуются с перевозчиком</span></div></div>
+    <section class="fleet-section container" id="fleet" aria-labelledby="fleet-title">
+      <div class="section-heading"><h2 id="fleet-title">Выберите услугу под задачу</h2><p>Выберите подходящий вариант.<br>Укажите адрес и удобную дату.</p></div>
+      <p class="pricing-example" data-example hidden>Тарифы для примера. Итоговую стоимость подтвердит диспетчер.</p>
+      
+      <div class="vehicle-grid" id="vehicle-grid"></div>
+    </section>
+    <section class="request-section" id="request" aria-labelledby="request-title">
+      <div class="container">
+        <div class="section-heading request-heading"><div><h2 id="request-title">Расскажите о вашей задаче</h2><p>Выберите услугу, укажите адрес и желаемую дату. Стоимость согласуется после уточнения деталей.</p></div></div>
+        <div class="request-layout">
+          <form id="request-form" class="form-card" novalidate>
+            <div class="form-intro"><h3>Услуга и параметры</h3><span>* Обязательные поля</span></div>
+            <div class="field"><label for="vehicle">Услуга <span>*</span></label><select id="vehicle" name="vehicle" required aria-describedby="vehicle-error"><option value="">Выберите услугу</option></select><span class="field-error" id="vehicle-error"></span></div>
+            <div class="form-row pricing-row">
+              <div class="field"><label for="hours">Желаемая длительность, ч <span>*</span></label><input id="hours" name="hours" type="number" value="2" min="1" max="24" step="0.5" inputmode="decimal" required aria-describedby="hours-hint hours-error"><span class="field-hint" id="hours-hint">Выберите услугу для уточнения минимального заказа.</span><span class="field-error" id="hours-error"></span></div>
+              <div class="field"><label for="zone">Где перевозка <span>*</span></label><select id="zone" name="zone" required aria-describedby="zone-error"><option value="city">По городу</option><option value="outside">За город / межгород</option></select><span class="field-error" id="zone-error"></span></div>
+            </div>
+            <div class="field" id="distance-field" hidden><label for="distance">Расстояние за городом в одну сторону, км <span>*</span></label><input id="distance" name="distance" type="number" min="1" max="2000" step="1" inputmode="numeric" placeholder="Например: 30" disabled aria-describedby="distance-hint distance-error"><span class="field-hint" id="distance-hint">В расчёт входит обратный путь. Расстояние по адресам автоматически не определяется.</span><span class="field-error" id="distance-error"></span></div>
+            <div class="inline-estimate"><span>Предварительно</span><output id="inline-price" aria-live="polite">Выберите услугу</output><small data-example hidden>Расчёт по тарифам для примера.</small></div>
+            <h3 class="form-section-title" id="route-heading">Маршрут и дата</h3>
+            <div class="form-row">
+              <div class="field"><label for="from">Откуда <span>*</span></label><input id="from" name="from" placeholder="Город, улица, дом" maxlength="180" required autocomplete="off" aria-describedby="from-error"><span class="field-error" id="from-error"></span></div>
+              <div class="field"><label for="to">Куда <span>*</span></label><input id="to" name="to" placeholder="Город, улица, дом" maxlength="180" required autocomplete="off" aria-describedby="to-error"><span class="field-error" id="to-error"></span></div>
+            </div>
+            <div class="form-row contact-row">
+              <div class="field"><label for="date">Желаемая дата <span>*</span></label><input id="date" name="date" type="date" required aria-describedby="date-error"><span class="field-error" id="date-error"></span></div>
+              <div class="field"><label for="contact">Телефон или Telegram <small>необязательно</small></label><input id="contact" name="contact" placeholder="Телефон или @username" maxlength="120" autocomplete="off" aria-describedby="contact-error"><span class="field-error" id="contact-error"></span></div>
+            </div>
+            <div class="field"><label for="time">Желаемое время <small>необязательно</small></label><input id="time" name="time" type="time" aria-describedby="time-hint time-error"><span class="field-hint" id="time-hint">Местное время по адресу отправления. Время согласуется при заказе.</span><span class="field-error" id="time-error"></span></div>
+            <h3 class="form-section-title">Груз и пожелания</h3>
+            <div class="field"><label for="cargo">Описание задачи <span>*</span></label><textarea id="cargo" name="cargo" rows="3" placeholder="Например: диван, холодильник и 10 коробок. Укажите примерный вес и размеры." maxlength="600" required aria-describedby="cargo-error"></textarea><span class="field-error" id="cargo-error"></span></div>
+            <div class="field field-last"><label for="comment">Дополнительные пожелания <small>необязательно</small></label><textarea id="comment" name="comment" rows="3" placeholder="Нужны ли грузчики? Есть ли лифт? Какое время вам подходит?" maxlength="1000" aria-describedby="comment-error"></textarea><span class="field-error" id="comment-error"></span></div>
+            <section class="photo-field" aria-labelledby="photos-title"><div class="photo-heading"><h3 id="photos-title">Фотографии груза или места работ</h3><span id="photo-count">0 из 5</span></div><label class="photo-picker" for="photos">Добавить фотографии<input id="photos" type="file" multiple accept="image/jpeg,image/png,image/webp" aria-describedby="photos-hint photos-status"></label><p class="field-hint" id="photos-hint">JPG, PNG или WebP, до 8 МБ каждое. Фото видны только вам. Прикрепите их отдельно к сообщению компании.</p><p class="field-error" id="photos-status" role="status"></p><ul class="photo-previews" id="photo-previews"></ul></section>
+            <details class="compact-conditions" id="conditions"><summary>Условия заказа</summary><ul id="conditions-list"></ul></details><p class="form-footnote">Стоимость и время подачи согласуются при подтверждении заявки.</p>
+            <p class="form-status" id="form-status" role="status" aria-live="polite" aria-atomic="true"></p>
+          </form>
+          <aside class="summary-card" aria-labelledby="summary-title">
+            <p class="summary-eyebrow">Параметры заявки</p>
+            <h3 id="summary-title">Ваша заявка</h3>
+            <div class="summary-vehicle"><span class="summary-vehicle-icon" aria-hidden="true"><svg viewBox="0 0 32 32"><path d="M3 7h16v16H3zm16 6h6l5 6v4H19M23 13v6h7"/><circle cx="9" cy="24" r="3"/><circle cx="25" cy="24" r="3"/></svg></span><div><strong id="selected-name">Выберите услугу</strong><p id="selected-detail">Подходящий вариант есть в каталоге</p></div></div>
+            <dl class="summary" id="summary">
+              <div><dt>Откуда</dt><dd id="summary-from">Укажите адрес</dd></div>
+              <div><dt>Куда</dt><dd id="summary-to">Укажите адрес</dd></div>
+              <div><dt>Дата</dt><dd id="summary-date">Выберите дату</dd></div>
+              <div id="summary-time-row" hidden><dt>Подача</dt><dd id="summary-time"></dd></div><div><dt>Груз</dt><dd id="summary-cargo">Добавьте описание</dd></div>
+              <div id="summary-comment-row" hidden><dt>Пожелания</dt><dd id="summary-comment"></dd></div>
+              <div id="summary-contact-row" hidden><dt>Контакт</dt><dd id="summary-contact"></dd></div>
+            </dl>
+            <div class="price-note"><span>Стоимость услуги</span><strong id="estimated-price">Выберите услугу</strong><dl class="price-breakdown" id="price-breakdown" hidden><div><dt>Работа</dt><dd id="work-price"></dd></div><div id="mileage-price-row" hidden><dt>Пробег</dt><dd id="mileage-price"></dd></div></dl><p id="estimate-hint">Тариф и минимальный заказ появятся после выбора машины.</p><p class="example-label" data-example hidden>Расчёт по тарифам для примера.</p></div>
+            <button type="submit" form="request-form" class="button button-primary prepare-button" id="prepare-request" disabled>Отправить заявку в Telegram →</button><button type="submit" form="request-form" data-action="preview" class="text-button summary-preview">Проверить текст заявки</button>
+            <p class="summary-footnote">Откроется Telegram с текстом заявки. Фотографии прикрепите в чате.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <p class="demo-disclosure container">Изображения показывают варианты техники. Подходящая машина и её наличие согласуются при заказе. <a href="PHOTO_SOURCES.html" target="_blank" rel="noopener noreferrer">Об изображениях</a></p><footer class="site-footer"><div class="footer-inner container"><div class="footer-brand"><strong data-company-name>Динамика логистик</strong><span data-company-descriptor>Грузоперевозки</span></div><span class="footer-region" data-region></span><div class="company-contacts" id="company-contacts"></div><a href="owner.html" class="footer-request">Панель владельца ↗</a></div></footer>
+  <dialog class="request-dialog" id="request-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-note">
+    <div class="dialog-header"><span class="telegram-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="m3 11 18-7-4 17-6-6-4 3 1-5 10-7-12 6Z"/></svg></span><div><h2 id="dialog-title">Заявка для Telegram</h2><p id="dialog-company" data-company-name>Динамика логистик</p></div><button class="icon-button" type="button" id="close-dialog" aria-label="Закрыть заявку"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+    <div class="dialog-content"><label class="visually-hidden" for="prepared-message">Подготовленный текст заявки</label><textarea id="prepared-message" readonly rows="14" spellcheck="false"></textarea></div>
+    <div class="dialog-footer"><p id="dialog-note">Скопируйте текст и отправьте его компании. Сообщение не отправляется автоматически.</p><p id="dialog-photo-note" hidden></p><div class="dialog-actions"><button class="button button-outline" type="button" id="copy-message">Скопировать заявку</button><a class="button button-telegram" id="telegram-link" target="_blank" rel="noopener noreferrer" hidden>Отправить в Telegram →</a></div><p id="copy-status" class="copy-status" role="status" aria-live="polite" aria-atomic="true"></p><button class="text-button" type="button" id="edit-request">Изменить данные</button></div>
+  </dialog>
+  <noscript><p class="noscript">Для выбора транспорта и подготовки заявки включите JavaScript.</p></noscript>
+</body>
+</html>
